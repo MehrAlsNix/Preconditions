@@ -17,6 +17,10 @@
 
 namespace MehrAlsNix\Preconditions;
 
+/**
+ * Class Preconditions
+ * @package MehrAlsNix\Preconditions
+ */
 final class Preconditions
 {
     private function __construct()
@@ -25,6 +29,8 @@ final class Preconditions
     }
 
     /**
+     * Check for arguments.
+     *
      * @param boolean $expression
      * @param string  $errorMessage
      * @param ...$errorMessageArgs
