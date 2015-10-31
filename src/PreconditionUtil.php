@@ -61,10 +61,12 @@ final class PreconditionUtil
      *
      * @throws Exception\NullPointerException if {`$reference`} is null
      */
-    public static function checkNotNull($reference, $errorMessage = null)
+    public static function checkNotNull($reference, $errorMessage = '', ...$errorMessageArgs)
     {
         if ($reference === null) {
-            throw new Exception\NullPointerException($errorMessage);
+            throw new Exception\NullPointerException(
+                vsprintf($errorMessage, $errorMessageArgs)
+            );
         }
         return $reference;
     }
