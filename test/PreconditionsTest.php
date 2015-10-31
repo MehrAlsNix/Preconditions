@@ -30,6 +30,7 @@ class PreconditionsTest extends TestCase
     {
         Preconditions::checkArgument(false);
     }
+
     /**
      * @test
      * @expectedException \InvalidArgumentException
@@ -39,6 +40,7 @@ class PreconditionsTest extends TestCase
     {
         Preconditions::checkArgument(false, 'Argument did not matched.');
     }
+
     /**
      * @test
      * @expectedException \InvalidArgumentException
@@ -47,5 +49,15 @@ class PreconditionsTest extends TestCase
     public function checkArgumentWithErrorMessageTemplateSubstitution()
     {
         Preconditions::checkArgument(false, 'Argument %s::%s', 'foo', 'bar');
+    }
+
+    /**
+     * @test
+     * @expectedException \MehrAlsNix\Preconditions\Exception\NullPointerException
+     * @expectedExceptionMessage Argument 'test' must not be null
+     */
+    public function checkArgNotNull()
+    {
+        Preconditions::checkArgNotNull(null, 'test');
     }
 }

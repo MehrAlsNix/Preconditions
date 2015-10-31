@@ -29,10 +29,11 @@ final class Preconditions
     }
 
     /**
-     * Check for arguments.
+     * Ensures the truth of an expression involving one or more parameters to the
+     * calling method.
      *
      * @param boolean $expression
-     * @param string  $errorMessage
+     * @param string $errorMessage
      * @param ...$errorMessageArgs
      *
      * @throws \InvalidArgumentException
@@ -44,5 +45,26 @@ final class Preconditions
                 vsprintf($errorMessage, $errorMessageArgs)
             );
         }
+    }
+
+    /**
+     * Ensures that an object reference passed as a parameter to the calling
+     * method is not null.
+     *
+     * @param object $reference
+     * @param string $parameterName
+     *
+     * @return object
+     *
+     * @throws Exception\NullPointerException
+     */
+    public static function checkArgNotNull($reference, $parameterName)
+    {
+        if ($reference === null) {
+            throw new Exception\NullPointerException(
+                sprintf('Argument \'%s\' must not be null', $parameterName)
+            );
+        }
+        return $reference;
     }
 }
