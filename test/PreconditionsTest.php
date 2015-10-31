@@ -32,7 +32,7 @@ class PreconditionsTest extends TestCase
      */
     public function checkArgument()
     {
-        PreconditionUtil::checkArgument(false);
+        checkArgument(false);
     }
 
     /**
@@ -42,7 +42,7 @@ class PreconditionsTest extends TestCase
      */
     public function checkArgumentWithErrorMessageSet()
     {
-        PreconditionUtil::checkArgument(false, 'Argument did not matched.');
+        checkArgument(false, 'Argument did not matched.');
     }
 
     /**
@@ -52,7 +52,7 @@ class PreconditionsTest extends TestCase
      */
     public function checkArgumentWithErrorMessageTemplateSubstitution()
     {
-        PreconditionUtil::checkArgument(false, 'Argument %s::%s', 'foo', 'bar');
+        checkArgument(false, 'Argument %s::%s', 'foo', 'bar');
     }
 
     /**

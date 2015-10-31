@@ -23,6 +23,9 @@
   "autoload-dev": {
     "psr-4": {
       "MehrAlsNix\\PreconditionsTest\\": "test/"
-    }
+    },
+    "files": [
+      "src/Functions/Preconditions.php"
+    ]
   }
 }
