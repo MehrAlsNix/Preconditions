@@ -93,4 +93,14 @@ class PreconditionsTest extends TestCase
     {
         PreconditionUtil::checkArgNotNull(null, 'test');
     }
+
+    /**
+     * @test
+     * @expectedException \MehrAlsNix\Preconditions\Exception\NullPointerException
+     * @expectedExceptionMessage test
+     */
+    public function checkNotNull()
+    {
+        PreconditionUtil::checkNotNull(null, 'test');
+    }
 }

@@ -54,6 +54,25 @@ final class PreconditionUtil
      * Ensures that an object reference passed as a parameter to the calling
      * method is not null.
      *
+     * @param object $reference    an object reference
+     * @param string $errorMessage the exception message to use if the check fails; will
+     *                             be converted to a string using {@link String#valueOf(Object)}
+     * @return mixed the non-null reference that was validated
+     *
+     * @throws Exception\NullPointerException if {`$reference`} is null
+     */
+    public static function checkNotNull($reference, $errorMessage = null)
+    {
+        if ($reference === null) {
+            throw new Exception\NullPointerException($errorMessage);
+        }
+        return $reference;
+    }
+
+    /**
+     * Ensures that an object reference passed as a parameter to the calling
+     * method is not null.
+     *
      * @param object $reference
      * @param string $parameterName
      *
@@ -79,7 +98,7 @@ final class PreconditionUtil
      * expression result.
      *
      * @param boolean $expression
-     * @param string  $errorMessage
+     * @param string $errorMessage
      * @param ...$errorMessageArgs
      *
      * @throws \UnexpectedValueException
