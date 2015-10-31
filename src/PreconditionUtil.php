@@ -59,7 +59,7 @@ final class PreconditionUtil
      *                             be converted to a string using {@link String#valueOf(Object)}
      * @return mixed the non-null reference that was validated
      *
-     * @throws Exception\NullPointerException if {`$reference`} is null
+     * @throws \MehrAlsNix\Preconditions\Exception\NullPointerException if {`$reference`} is null
      */
     public static function checkNotNull($reference, $errorMessage = '', ...$errorMessageArgs)
     {
@@ -80,7 +80,7 @@ final class PreconditionUtil
      *
      * @return object
      *
-     * @throws Exception\NullPointerException
+     * @throws \MehrAlsNix\Preconditions\Exception\NullPointerException
      */
     public static function checkArgNotNull($reference, $parameterName)
     {
@@ -126,7 +126,7 @@ final class PreconditionUtil
      *
      * @return int the value of `$index`
      *
-     * @throws Exception\IndexOutOfBoundsException if `$index` is negative or is not
+     * @throws \MehrAlsNix\Preconditions\Exception\IndexOutOfBoundsException if `$index` is negative or is not
      *                                   less than `$size`
      * @throws \InvalidArgumentException  if `$size` is negative
      */
@@ -168,7 +168,7 @@ final class PreconditionUtil
      * @param int $size the size of that array, list or string
      * @param string $desc the text to use to describe this index in an error message
      * @return int the value of `$index`
-     * @throws Exception\IndexOutOfBoundsException if `$index` is negative or is
+     * @throws \MehrAlsNix\Preconditions\Exception\IndexOutOfBoundsException if `$index` is negative or is
      *                                   greater than `$size`
      * @throws \InvalidArgumentException  if `$size` is negative
      */
@@ -210,7 +210,7 @@ final class PreconditionUtil
      * @param int $end a user-supplied index identifying a ending position in an array,
      *              list or string
      * @param int $size the size of that array, list or string
-     * @throws Exception\IndexOutOfBoundsException if either index is negative or is
+     * @throws \MehrAlsNix\Preconditions\Exception\IndexOutOfBoundsException if either index is negative or is
      *                                   greater than `$size`, or if `$end` is less than `$start`
      * @throws \InvalidArgumentException  if `$size` is negative
      */

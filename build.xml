@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<project name="preconditions" basedir="." default="build.functions">
+    <property name="path" value="bin/funcgen.php"/>
+    <target name="build.functions">
+        <exec executable="php" outputProperty="result">
+            <arg path="${path}"/>
+        </exec>
+        <echo message="${result}"/>
+    </target>
+</project>
