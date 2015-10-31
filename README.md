@@ -22,6 +22,8 @@ Instead of writing
 
 you could use a precondition like
 ```
-    \MehrAlsNix\Preconditions\PreconditionUtil::checkArgument($count <= 0, 'must be positive: %s', $count);
+    use \MehrAlsNix\Preconditions\PreconditionUtil;
+    //...
+    PreconditionUtil::checkArgument($count <= 0, 'must be positive: %s', $count);
 ```
  
