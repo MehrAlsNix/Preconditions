@@ -45,14 +45,44 @@ use MehrAlsNix\Preconditions\PreconditionUtil;
 FILE_HEAD;
 
 foreach ($methods as $method) {
+    $parameterList = implode(', ', array_map(
+            function (\ReflectionParameter $p) {
+                if ($p->isVariadic()) {
+                    $result = sprintf('...$%s', $p->getName());
+                } else {
+                    $result = sprintf('$%s', $p->getName());
+                }
 
-    $parameters = '$' . implode(', $', array_map(function (\ReflectionParameter $p) { return $p->getName(); }, $method->getParameters()));
+                return $result;
+            },
+            $method->getParameters()
+        )
+    );
+    $parameters = implode(
+        ', ', array_map(
+            function (\ReflectionParameter $p) {
+                try {
+                    $result = sprintf('$%s = \'%s\'', $p->getName(), $p->getDefaultValue());
+                } catch (\ReflectionException $re) {
+                    if ($p->isVariadic()) {
+                        $result = sprintf('...$%s', $p->getName());
+                    } else {
+                        $result = sprintf('$%s', $p->getName());
+                    }
+
+                    return $result;
+                }
+                return $result;
+            },
+            $method->getParameters()
+        )
+    );
     $line[] = <<<FUNCTION_FILE
 if (!function_exists('{$method->getName()}')) {
     {$method->getDocComment()}
     function {$method->getName()}({$parameters})
     {
-        PreconditionUtil::{$method->getName()}({$parameters});
+        PreconditionUtil::{$method->getName()}({$parameterList});
     }
 }
 

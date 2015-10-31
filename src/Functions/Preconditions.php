@@ -31,9 +31,9 @@ if (!function_exists('checkArgument')) {
      *
      * @throws \InvalidArgumentException
      */
-    function checkArgument($expression, $errorMessage, $errorMessageArgs)
+    function checkArgument($expression, $errorMessage = '', ...$errorMessageArgs)
     {
-        PreconditionUtil::checkArgument($expression, $errorMessage, $errorMessageArgs);
+        PreconditionUtil::checkArgument($expression, $errorMessage, ...$errorMessageArgs);
     }
 }
 
@@ -45,13 +45,15 @@ if (!function_exists('checkNotNull')) {
      * @param object $reference an object reference
      * @param string $errorMessage the exception message to use if the check fails; will
      *                             be converted to a string using {@link String#valueOf(Object)}
+     * @param ...$errorMessageArgs
+     *
      * @return mixed the non-null reference that was validated
      *
-     * @throws \MehrAlsNix\Preconditions\Exception\NullPointerException if {`$reference`} is null
+     * @throws \MehrAlsNix\Preconditions\Exception\NullPointerException
      */
-    function checkNotNull($reference, $errorMessage, $errorMessageArgs)
+    function checkNotNull($reference, $errorMessage = '', ...$errorMessageArgs)
     {
-        PreconditionUtil::checkNotNull($reference, $errorMessage, $errorMessageArgs);
+        PreconditionUtil::checkNotNull($reference, $errorMessage, ...$errorMessageArgs);
     }
 }
 
@@ -87,9 +89,9 @@ if (!function_exists('checkValue')) {
      *
      * @throws \UnexpectedValueException
      */
-    function checkValue($expression, $errorMessage, $errorMessageArgs)
+    function checkValue($expression, $errorMessage = '', ...$errorMessageArgs)
     {
-        PreconditionUtil::checkValue($expression, $errorMessage, $errorMessageArgs);
+        PreconditionUtil::checkValue($expression, $errorMessage, ...$errorMessageArgs);
     }
 }
 
@@ -110,7 +112,7 @@ if (!function_exists('checkElementIndex')) {
      *                                   less than `$size`
      * @throws \InvalidArgumentException  if `$size` is negative
      */
-    function checkElementIndex($index, $size, $desc)
+    function checkElementIndex($index, $size, $desc = 'index')
     {
         PreconditionUtil::checkElementIndex($index, $size, $desc);
     }

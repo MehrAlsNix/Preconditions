@@ -57,9 +57,11 @@ final class PreconditionUtil
      * @param object $reference an object reference
      * @param string $errorMessage the exception message to use if the check fails; will
      *                             be converted to a string using {@link String#valueOf(Object)}
+     * @param ...$errorMessageArgs
+     *
      * @return mixed the non-null reference that was validated
      *
-     * @throws \MehrAlsNix\Preconditions\Exception\NullPointerException if {`$reference`} is null
+     * @throws \MehrAlsNix\Preconditions\Exception\NullPointerException
      */
     public static function checkNotNull($reference, $errorMessage = '', ...$errorMessageArgs)
     {
