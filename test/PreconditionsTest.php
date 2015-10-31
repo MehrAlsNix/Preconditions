@@ -20,6 +20,10 @@ namespace MehrAlsNix\PreconditionsTest;
 use MehrAlsNix\Preconditions\Preconditions;
 use PHPUnit_Framework_TestCase as TestCase;
 
+/**
+ * Class PreconditionsTest
+ * @package MehrAlsNix\PreconditionsTest
+ */
 class PreconditionsTest extends TestCase
 {
     /**
