@@ -61,7 +61,7 @@ class PreconditionsTest extends TestCase
      */
     public function checkValue()
     {
-        PreconditionUtil::checkValue(false);
+        checkValue(false);
     }
 
     /**
@@ -71,7 +71,7 @@ class PreconditionsTest extends TestCase
      */
     public function checkValueWithErrorMessageSet()
     {
-        PreconditionUtil::checkValue(false, 'Value did not matched.');
+        checkValue(false, 'Value did not matched.');
     }
 
     /**
@@ -81,7 +81,7 @@ class PreconditionsTest extends TestCase
      */
     public function checkValueWithErrorMessageTemplateSubstitution()
     {
-        PreconditionUtil::checkValue(false, 'Value is not one of %s, %s or %s', 'foo', 'bar', 'baz');
+        checkValue(false, 'Value is not one of %s, %s or %s', 'foo', 'bar', 'baz');
     }
 
     /**
@@ -91,7 +91,7 @@ class PreconditionsTest extends TestCase
      */
     public function checkArgNotNull()
     {
-        PreconditionUtil::checkArgNotNull(null, 'test');
+        checkArgNotNull(null, 'test');
     }
 
     /**

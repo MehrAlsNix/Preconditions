@@ -119,10 +119,10 @@ final class PreconditionUtil
      * list or string of size `$size`. An element index may range from zero,
      * inclusive, to `$size`, exclusive.
      *
-     * @param int $index    a user-supplied index identifying an element of an array, list
+     * @param int $index a user-supplied index identifying an element of an array, list
      *                      or string
-     * @param int $size     the size of that array, list or string
-     * @param string $desc  the text to use to describe this index in an error message
+     * @param int $size the size of that array, list or string
+     * @param string $desc the text to use to describe this index in an error message
      *
      * @return int the value of `$index`
      *
@@ -132,7 +132,6 @@ final class PreconditionUtil
      */
     public static function checkElementIndex($index, $size, $desc = 'index')
     {
-        // Carefully optimized for execution by hotspot (explanatory comment above)
         if ($index < 0 || $index >= $size) {
             throw new Exception\IndexOutOfBoundsException(self::badElementIndex($index, $size, $desc));
         }
@@ -157,5 +156,89 @@ final class PreconditionUtil
         } else { // index >= size
             return vsprintf('%s (%s) must be less than size (%s)', $desc, $index, $size);
         }
+    }
+
+    /**
+     * Ensures that `$index` specifies a valid <i>position</i> in an array,
+     * list or string of size `$size`. A position index may range from zero
+     * to `$size`, inclusive.
+     *
+     * @param int $index a user-supplied index identifying a position in an array, list
+     *              or string
+     * @param int $size the size of that array, list or string
+     * @param string $desc the text to use to describe this index in an error message
+     * @return int the value of `$index`
+     * @throws Exception\IndexOutOfBoundsException if `$index` is negative or is
+     *                                   greater than `$size`
+     * @throws \InvalidArgumentException  if `$size` is negative
+     */
+    public static function checkPositionIndex($index, $size, $desc)
+    {
+        if ($index < 0 || $index > $size) {
+            throw new Exception\IndexOutOfBoundsException(self::badPositionIndex($index, $size, $desc));
+        }
+        return $index;
+    }
+
+    /**
+     * @param int $index
+     * @param int $size
+     * @param string $desc
+     * 
+     * @return string
+     * 
+     * @throws \InvalidArgumentException
+     */
+    private static function badPositionIndex($index, $size, $desc)
+    {
+        if ($index < 0) {
+            return sprintf('%s (%s) must not be negative', $desc, $index);
+        } elseif ($size < 0) {
+            throw new \InvalidArgumentException('negative size: ' . $size);
+        } else { // index > size
+            return sprintf('%s (%s) must not be greater than size (%s)', $desc, $index, $size);
+        }
+    }
+
+    /**
+     * Ensures that `$start` and `$end` specify a valid <i>positions</i>
+     * in an array, list or string of size `$size`, and are in order. A
+     * position index may range from zero to `$size`, inclusive.
+     *
+     * @param int $start a user-supplied index identifying a starting position in an
+     *              array, list or string
+     * @param int $end a user-supplied index identifying a ending position in an array,
+     *              list or string
+     * @param int $size the size of that array, list or string
+     * @throws Exception\IndexOutOfBoundsException if either index is negative or is
+     *                                   greater than `$size`, or if `$end` is less than `$start`
+     * @throws \InvalidArgumentException  if `$size` is negative
+     */
+    public static function checkPositionIndexes($start, $end, $size)
+    {
+        if ($start < 0 || $end < $start || $end > $size) {
+            throw new Exception\IndexOutOfBoundsException(self::badPositionIndexes($start, $end, $size));
+        }
+    }
+
+    /**
+     * @param int $start
+     * @param int $end
+     * @param int $size
+     * 
+     * @return string
+     * 
+     * @throws \InvalidArgumentException
+     */
+    private static function badPositionIndexes($start, $end, $size)
+    {
+        if ($start < 0 || $start > $size) {
+            return self::badPositionIndex($start, $size, 'start index');
+        }
+        if ($end < 0 || $end > $size) {
+            return self::badPositionIndex($end, $size, 'end index');
+        }
+        // end < start
+        return sprintf('end index (%s) must not be less than start index (%s)', $end, $start);
     }
 }
