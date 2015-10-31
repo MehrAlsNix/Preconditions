@@ -1,6 +1,6 @@
 {
   "name": "mehr-als-nix/preconditions",
-  "description": "description_text",
+  "description": "Preconditions for PHP",
   "minimum-stability": "stable",
   "license": "MIT",
   "authors": [

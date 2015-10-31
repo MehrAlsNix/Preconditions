@@ -17,7 +17,7 @@
 
 namespace MehrAlsNix\PreconditionsTest;
 
-use MehrAlsNix\Preconditions\Preconditions;
+use MehrAlsNix\Preconditions\PreconditionUtil;
 use PHPUnit_Framework_TestCase as TestCase;
 
 /**
@@ -32,7 +32,7 @@ class PreconditionsTest extends TestCase
      */
     public function checkArgument()
     {
-        Preconditions::checkArgument(false);
+        PreconditionUtil::checkArgument(false);
     }
 
     /**
@@ -42,7 +42,7 @@ class PreconditionsTest extends TestCase
      */
     public function checkArgumentWithErrorMessageSet()
     {
-        Preconditions::checkArgument(false, 'Argument did not matched.');
+        PreconditionUtil::checkArgument(false, 'Argument did not matched.');
     }
 
     /**
@@ -52,7 +52,7 @@ class PreconditionsTest extends TestCase
      */
     public function checkArgumentWithErrorMessageTemplateSubstitution()
     {
-        Preconditions::checkArgument(false, 'Argument %s::%s', 'foo', 'bar');
+        PreconditionUtil::checkArgument(false, 'Argument %s::%s', 'foo', 'bar');
     }
 
     /**
@@ -62,6 +62,6 @@ class PreconditionsTest extends TestCase
      */
     public function checkArgNotNull()
     {
-        Preconditions::checkArgNotNull(null, 'test');
+        PreconditionUtil::checkArgNotNull(null, 'test');
     }
 }

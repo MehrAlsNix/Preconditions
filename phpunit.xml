@@ -12,7 +12,7 @@
          stopOnFailure="false">
 
     <testsuites>
-        <testsuite name="MehrAlsNix\Preconditions Tests">
+        <testsuite name="MehrAlsNix\PreconditionUtil Tests">
             <directory suffix=".php">test</directory>
         </testsuite>
     </testsuites>

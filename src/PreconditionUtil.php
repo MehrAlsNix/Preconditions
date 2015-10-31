@@ -18,10 +18,10 @@
 namespace MehrAlsNix\Preconditions;
 
 /**
- * Class Preconditions
- * @package MehrAlsNix\Preconditions
+ * Class PreconditionUtil
+ * @package MehrAlsNix\PreconditionUtil
  */
-final class Preconditions
+final class PreconditionUtil
 {
     private function __construct()
     {
@@ -31,6 +31,9 @@ final class Preconditions
     /**
      * Ensures the truth of an expression involving one or more parameters to the
      * calling method.
+     *
+     * This method will return an `\InvalidArgumentException` in case of an `false`
+     * expression result.
      *
      * @param boolean $expression
      * @param string $errorMessage
