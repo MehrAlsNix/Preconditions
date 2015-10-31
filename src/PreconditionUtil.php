@@ -54,7 +54,7 @@ final class PreconditionUtil
      * Ensures that an object reference passed as a parameter to the calling
      * method is not null.
      *
-     * @param object $reference    an object reference
+     * @param object $reference an object reference
      * @param string $errorMessage the exception message to use if the check fails; will
      *                             be converted to a string using {@link String#valueOf(Object)}
      * @return mixed the non-null reference that was validated
@@ -111,6 +111,51 @@ final class PreconditionUtil
             throw new \UnexpectedValueException(
                 vsprintf($errorMessage, $errorMessageArgs)
             );
+        }
+    }
+
+    /**
+     * Ensures that `$index` specifies a valid <i>element</i> in an array,
+     * list or string of size `$size`. An element index may range from zero,
+     * inclusive, to `$size`, exclusive.
+     *
+     * @param int $index    a user-supplied index identifying an element of an array, list
+     *                      or string
+     * @param int $size     the size of that array, list or string
+     * @param string $desc  the text to use to describe this index in an error message
+     *
+     * @return int the value of `$index`
+     *
+     * @throws Exception\IndexOutOfBoundsException if `$index` is negative or is not
+     *                                   less than `$size`
+     * @throws \InvalidArgumentException  if `$size` is negative
+     */
+    public static function checkElementIndex($index, $size, $desc = 'index')
+    {
+        // Carefully optimized for execution by hotspot (explanatory comment above)
+        if ($index < 0 || $index >= $size) {
+            throw new Exception\IndexOutOfBoundsException(self::badElementIndex($index, $size, $desc));
+        }
+        return $index;
+    }
+
+    /**
+     * @param int $index
+     * @param int $size
+     * @param string $desc
+     *
+     * @return string
+     *
+     * @throws \InvalidArgumentException
+     */
+    private static function badElementIndex($index, $size, $desc)
+    {
+        if ($index < 0) {
+            return vsprintf('%s (%s) must not be negative', $desc, $index);
+        } elseif ($size < 0) {
+            throw new \InvalidArgumentException('negative size: ' . $size);
+        } else { // index >= size
+            return vsprintf('%s (%s) must be less than size (%s)', $desc, $index, $size);
         }
     }
 }
