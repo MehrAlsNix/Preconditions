@@ -2,7 +2,16 @@
 
 Preconditions are ment to be an alternative way to ensure that a precondition for a specific method is given.
 
-Example:
+## Available checks
+
+- checkArgument()
+- checkArgNotNull()
+
+## Additional exceptions
+
+- NullPointerException
+
+## Example
 
 Instead of writing
 ```
