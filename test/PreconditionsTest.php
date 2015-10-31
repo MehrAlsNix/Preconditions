@@ -57,6 +57,35 @@ class PreconditionsTest extends TestCase
 
     /**
      * @test
+     * @expectedException \UnexpectedValueException
+     */
+    public function checkValue()
+    {
+        PreconditionUtil::checkValue(false);
+    }
+
+    /**
+     * @test
+     * @expectedException \UnexpectedValueException
+     * @expectedExceptionMessage Value did not matched.
+     */
+    public function checkValueWithErrorMessageSet()
+    {
+        PreconditionUtil::checkValue(false, 'Value did not matched.');
+    }
+
+    /**
+     * @test
+     * @expectedException \UnexpectedValueException
+     * @expectedExceptionMessage Value is not one of foo, bar or baz
+     */
+    public function checkValueWithErrorMessageTemplateSubstitution()
+    {
+        PreconditionUtil::checkValue(false, 'Value is not one of %s, %s or %s', 'foo', 'bar', 'baz');
+    }
+
+    /**
+     * @test
      * @expectedException \MehrAlsNix\Preconditions\Exception\NullPointerException
      * @expectedExceptionMessage Argument 'test' must not be null
      */

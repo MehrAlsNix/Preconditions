@@ -32,7 +32,7 @@ final class PreconditionUtil
      * Ensures the truth of an expression involving one or more parameters to the
      * calling method.
      *
-     * This method will return an `\InvalidArgumentException` in case of an `false`
+     * This method will throw an `\InvalidArgumentException` in case of an `false`
      * expression result.
      *
      * @param boolean $expression
@@ -69,5 +69,27 @@ final class PreconditionUtil
             );
         }
         return $reference;
+    }
+
+    /**
+     * Ensures the truth of an expression involving one or more parameters to the
+     * calling method.
+     *
+     * This method will throw an `\UnexpectedValueException` in case of an `false`
+     * expression result.
+     *
+     * @param boolean $expression
+     * @param string  $errorMessage
+     * @param ...$errorMessageArgs
+     *
+     * @throws \UnexpectedValueException
+     */
+    public static function checkValue($expression, $errorMessage = '', ...$errorMessageArgs)
+    {
+        if (!$expression) {
+            throw new \UnexpectedValueException(
+                vsprintf($errorMessage, $errorMessageArgs)
+            );
+        }
     }
 }
