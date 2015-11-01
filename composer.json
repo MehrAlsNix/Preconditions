@@ -1,6 +1,7 @@
 {
   "name": "mehr-als-nix/preconditions",
   "description": "Preconditions for PHP",
+  "homepage": "http://mehralsnix.github.io/Preconditions/",
   "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
