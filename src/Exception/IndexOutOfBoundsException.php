@@ -17,8 +17,6 @@
 
 namespace MehrAlsNix\Preconditions\Exception;
 
-use Prophecy\Exception\InvalidArgumentException;
-
 /**
  * Class IndexOutOfBoundsException
  * @package MehrAlsNix\Preconditions\Exception

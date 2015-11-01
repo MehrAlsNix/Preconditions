@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 
-<project name="preconditions" basedir="." default="build.functions">
+<project name="preconditions" basedir="." default="gen-func">
     <property name="path" value="bin/funcgen.php"/>
-    <target name="build.functions">
+    <target name="gen-func" description="Generates function file.">
         <exec executable="php" outputProperty="result">
             <arg path="${path}"/>
         </exec>
