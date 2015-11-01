@@ -2,15 +2,21 @@
 
 [![Build Status](https://travis-ci.org/MehrAlsNix/Preconditions.svg?branch=develop)](https://travis-ci.org/MehrAlsNix/Preconditions)
 
-Preconditions are ment to be an alternative way to ensure that a precondition for a specific method is given.
+Preconditions are meant to be an alternative way to ensure that a precondition for a specific method is given.
 
 ## Available checks
 
 - checkArgument()
 - checkArgNotNull()
+- checkNotNull()
+- checkElementIndex()
+- checkPositionIndex()
+- checkPositionIndexes()
+- checkValue()
 
 ## Additional exceptions
 
+- IndexOutOfBoundsException
 - NullPointerException
 
 ## Example
