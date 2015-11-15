@@ -12,12 +12,14 @@ Preconditions are meant to be an alternative way to ensure that a precondition f
 - checkElementIndex()
 - checkPositionIndex()
 - checkPositionIndexes()
+- checkState()
 - checkValue()
 
 ## Additional exceptions
 
 - IndexOutOfBoundsException
 - NullPointerException
+- StateException
 
 ## Example
 
@@ -34,4 +36,3 @@ you could use a precondition like
     //...
     PreconditionUtil::checkArgument($count <= 0, 'must be positive: %s', $count);
 ```
- 

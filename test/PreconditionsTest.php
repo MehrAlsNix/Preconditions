@@ -54,6 +54,34 @@ class PreconditionsTest extends TestCase
     {
         checkArgument(false, 'Argument %s::%s', 'foo', 'bar');
     }
+    /**
+     * @test
+     * @expectedException \MehrAlsNix\Preconditions\Exception\IllegalStateException
+     */
+    public function checkState()
+    {
+        checkState(false);
+    }
+
+    /**
+     * @test
+     * @expectedException \MehrAlsNix\Preconditions\Exception\IllegalStateException
+     * @expectedExceptionMessage This object has a wrong state.
+     */
+    public function checkStateWithErrorMessageSet()
+    {
+        checkState(false, 'This object has a wrong state.');
+    }
+
+    /**
+     * @test
+     * @expectedException \MehrAlsNix\Preconditions\Exception\IllegalStateException
+     * @expectedExceptionMessage State foo::bar is wrong.
+     */
+    public function checkStateWithErrorMessageTemplateSubstitution()
+    {
+        checkState(false, 'State %s::%s is wrong.', 'foo', 'bar');
+    }
 
     /**
      * @test

@@ -37,6 +37,26 @@ if (!function_exists('checkArgument')) {
     }
 }
 
+if (!function_exists('checkState')) {
+    /**
+     * Ensures the truth of an expression involving the state of the calling
+     * instance, but not involving any parameters to the calling method.
+     *
+     * This method will throw an `\InvalidArgumentException` in case of an `false`
+     * expression result.
+     *
+     * @param boolean $expression
+     * @param string $errorMessage
+     * @param ...$errorMessageArgs
+     *
+     * @throws IllegalStateException
+     */
+    function checkState($expression, $errorMessage = '', ...$errorMessageArgs)
+    {
+        PreconditionUtil::checkState($expression, $errorMessage, ...$errorMessageArgs);
+    }
+}
+
 if (!function_exists('checkNotNull')) {
     /**
      * Ensures that an object reference passed as a parameter to the calling
