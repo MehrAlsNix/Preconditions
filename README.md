@@ -19,7 +19,7 @@ Preconditions are meant to be an alternative way to ensure that a precondition f
 
 - IndexOutOfBoundsException
 - NullPointerException
-- StateException
+- IllegalStateException
 
 ## Example
 
