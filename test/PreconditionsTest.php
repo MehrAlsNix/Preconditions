@@ -17,7 +17,6 @@
 
 namespace MehrAlsNix\PreconditionsTest;
 
-use MehrAlsNix\Preconditions\PreconditionUtil;
 use PHPUnit_Framework_TestCase as TestCase;
 
 /**
@@ -129,6 +128,6 @@ class PreconditionsTest extends TestCase
      */
     public function checkNotNull()
     {
-        PreconditionUtil::checkNotNull(null, 'test');
+        checkNotNull(null, 'test');
     }
 }

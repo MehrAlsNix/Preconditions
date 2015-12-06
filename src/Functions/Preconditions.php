@@ -49,7 +49,7 @@ if (!function_exists('checkState')) {
      * @param string $errorMessage
      * @param ...$errorMessageArgs
      *
-     * @throws IllegalStateException
+     * @throws \MehrAlsNix\Preconditions\Exception\IllegalStateException
      */
     function checkState($expression, $errorMessage = '', ...$errorMessageArgs)
     {
@@ -62,7 +62,7 @@ if (!function_exists('checkNotNull')) {
      * Ensures that an object reference passed as a parameter to the calling
      * method is not null.
      *
-     * @param object $reference an object reference
+     * @param mixed $reference an object reference
      * @param string $errorMessage the exception message to use if the check fails; will
      *                             be converted to a string using {@link String#valueOf(Object)}
      * @param ...$errorMessageArgs
@@ -82,10 +82,10 @@ if (!function_exists('checkArgNotNull')) {
      * Ensures that an object reference passed as a parameter to the calling
      * method is not null.
      *
-     * @param object $reference
+     * @param mixed $reference
      * @param string $parameterName
      *
-     * @return object
+     * @return mixed
      *
      * @throws \MehrAlsNix\Preconditions\Exception\NullPointerException
      */

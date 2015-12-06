@@ -29,6 +29,11 @@ final class PreconditionUtil
         // hidden constructor.
     }
 
+    private function __clone()
+    {
+        // clones are not permitted.
+    }
+
     /**
      * Ensures the truth of an expression involving one or more parameters to the
      * calling method.
@@ -77,7 +82,7 @@ final class PreconditionUtil
      * Ensures that an object reference passed as a parameter to the calling
      * method is not null.
      *
-     * @param object $reference an object reference
+     * @param mixed $reference an object reference
      * @param string $errorMessage the exception message to use if the check fails; will
      *                             be converted to a string using {@link String#valueOf(Object)}
      * @param ...$errorMessageArgs
@@ -100,10 +105,10 @@ final class PreconditionUtil
      * Ensures that an object reference passed as a parameter to the calling
      * method is not null.
      *
-     * @param object $reference
+     * @param mixed $reference
      * @param string $parameterName
      *
-     * @return object
+     * @return mixed
      *
      * @throws \MehrAlsNix\Preconditions\Exception\NullPointerException
      */
@@ -175,11 +180,11 @@ final class PreconditionUtil
     private static function badElementIndex($index, $size, $desc)
     {
         if ($index < 0) {
-            return vsprintf('%s (%s) must not be negative', $desc, $index);
+            return vsprintf('%s (%s) must not be negative', [$desc, $index]);
         } elseif ($size < 0) {
             throw new \InvalidArgumentException('negative size: ' . $size);
         } else { // index >= size
-            return vsprintf('%s (%s) must be less than size (%s)', $desc, $index, $size);
+            return vsprintf('%s (%s) must be less than size (%s)', [$desc, $index, $size]);
         }
     }
 
